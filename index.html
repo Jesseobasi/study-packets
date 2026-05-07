@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Set Template</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand-mark">Study Template</div>
+      <button id="theme-toggle" type="button" class="theme-switch" aria-label="Toggle light and dark mode" aria-pressed="false">
+        <span class="theme-label theme-label-light">Light</span>
+        <span class="theme-track" aria-hidden="true">
+          <span class="theme-thumb"></span>
+        </span>
+        <span class="theme-label theme-label-dark">Dark</span>
+      </button>
+    </header>
+
+    <section class="study-hero">
+      <div class="study-hero-main">
+        <div id="site-badge" class="eyebrow-pill"></div>
+        <h1 id="site-title" class="hero-title"></h1>
+        <p id="site-description" class="hero-description"></p>
+        <div class="hero-meta">
+          <div class="meta-chip">
+            <span class="meta-label">Terms</span>
+            <strong id="set-term-count" class="meta-value">0</strong>
+          </div>
+          <div class="meta-chip">
+            <span class="meta-label">Packets</span>
+            <strong id="packet-count-inline" class="meta-value">0</strong>
+          </div>
+          <div class="meta-chip">
+            <span class="meta-label">Style</span>
+            <strong class="meta-value">Quizlet-like</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-actions hero-actions-stack">
+        <button id="hero-review-cards" class="button button-primary" type="button">Flashcards</button>
+        <button id="hero-start-quiz" class="button button-secondary" type="button">Test Yourself</button>
+        <button id="hero-open-list" class="button button-ghost" type="button">All Terms</button>
+      </div>
+    </section>
+
+    <section class="study-modes">
+      <button data-mode-target="flashcards" class="study-mode-card is-active" type="button">
+        <span class="study-mode-label">Flashcards</span>
+        <strong class="study-mode-title">Review Terms Fast</strong>
+        <span class="study-mode-copy">Flip through cards one by one just like a study set.</span>
+      </button>
+      <button data-mode-target="quiz" class="study-mode-card" type="button">
+        <span class="study-mode-label">Test</span>
+        <strong class="study-mode-title">Check Recall</strong>
+        <span class="study-mode-copy">Answer close distractors and track your score live.</span>
+      </button>
+      <button data-mode-target="list" class="study-mode-card" type="button">
+        <span class="study-mode-label">Learn</span>
+        <strong class="study-mode-title">Scan Every Term</strong>
+        <span class="study-mode-copy">Search the whole bank and review definitions quickly.</span>
+      </button>
+      <button data-mode-target="overview" class="study-mode-card" type="button">
+        <span class="study-mode-label">Guide</span>
+        <strong class="study-mode-title">Browse Themes</strong>
+        <span class="study-mode-copy">See the bigger chapter groupings behind the terms.</span>
+      </button>
+    </section>
+
+    <div class="content-grid">
+      <main class="main-content">
+        <section id="flashcards" class="mode-panel is-active panel-card">
+          <div class="flashcard-head">
+            <div>
+              <p class="section-eyebrow">Study Set</p>
+              <h2 class="panel-title">Flashcards</h2>
+            </div>
+            <div id="flashcard-counter" class="info-pill info-pill-cool"></div>
+          </div>
+
+          <div class="flashcard-shell">
+            <button id="flashcard" class="flashcard-button" type="button">
+              <div id="flashcard-inner" class="flashcard-inner">
+                <div class="flashcard-face flashcard-front">
+                  <div class="flashcard-top">
+                    <div>
+                      <p id="flashcard-family" class="muted-meta"></p>
+                    </div>
+                    <div class="mini-pill mini-pill-cool">Term</div>
+                  </div>
+                  <div class="flashcard-body">
+                    <h3 id="flashcard-term" class="flashcard-title"></h3>
+                  </div>
+                  <div class="flashcard-bottom">Click anywhere on the card to flip.</div>
+                </div>
+
+                <div class="flashcard-face flashcard-back">
+                  <div class="flashcard-top flashcard-top-warm">
+                    <div>
+                      <p id="flashcard-subtopic" class="muted-meta"></p>
+                    </div>
+                    <div class="mini-pill mini-pill-warm">Definition</div>
+                  </div>
+                  <div class="flashcard-body">
+                    <p id="flashcard-def" class="flashcard-answer"></p>
+                  </div>
+                  <div class="flashcard-bottom flashcard-bottom-warm">Tap again to go back to the term.</div>
+                </div>
+              </div>
+            </button>
+          </div>
+
+          <div class="card-toolbar">
+            <button id="prev-card" class="button button-ghost icon-button" type="button">Previous</button>
+            <button id="flip-card" class="button button-primary icon-button" type="button">Flip</button>
+            <button id="next-card" class="button button-ghost icon-button" type="button">Next</button>
+          </div>
+        </section>
+
+        <section id="quiz" class="mode-panel panel-card">
+          <div class="panel-head">
+            <div>
+              <p class="section-eyebrow">Practice Test</p>
+              <h2 class="panel-title">Quiz Mode</h2>
+            </div>
+            <div id="quiz-progress" class="info-pill info-pill-cool"></div>
+          </div>
+
+          <div class="quiz-layout">
+            <div class="quiz-card">
+              <div class="question-card">
+                <p class="section-eyebrow">Choose The Best Match</p>
+                <h3 id="quiz-term" class="quiz-title"></h3>
+                <div id="quiz-options" class="quiz-options"></div>
+              </div>
+
+              <div class="quiz-actions">
+                <p id="quiz-feedback" class="feedback-copy"></p>
+                <div class="stacked-actions stacked-actions-compact">
+                  <button id="restart-quiz" class="button button-ghost" type="button">Restart</button>
+                  <button id="next-question" class="button button-primary" type="button">Next</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="list" class="mode-panel panel-card">
+          <div class="panel-head">
+            <div>
+              <p class="section-eyebrow">All Terms</p>
+              <h2 class="panel-title">Question Bank</h2>
+            </div>
+            <div class="search-field">
+              <label for="search-input" class="search-label">Search terms or definitions</label>
+              <input id="search-input" type="text" placeholder="Search DNS, ACK, SDN, delay, BGP...">
+            </div>
+          </div>
+
+          <div class="results-head">
+            <p id="results-count" class="results-copy"></p>
+            <button id="clear-search" class="button button-ghost button-small" type="button">Clear</button>
+          </div>
+
+          <div id="term-list" class="reference-list"></div>
+        </section>
+
+        <section id="overview" class="mode-panel panel-card">
+          <div class="panel-head">
+            <div>
+              <p class="section-eyebrow">Set Guide</p>
+              <h2 class="panel-title">Chapter Themes</h2>
+            </div>
+            <div id="overview-badge" class="info-pill"></div>
+          </div>
+          <div id="overview-sections" class="theme-grid"></div>
+        </section>
+      </main>
+
+      <aside class="sidebar">
+        <section class="sidebar-card">
+          <p class="section-eyebrow">Set Stats</p>
+          <div class="stats-grid">
+            <div class="stats-card">
+              <p class="stats-label">Questions</p>
+              <p id="stat-total" class="stats-value">0</p>
+            </div>
+            <div class="stats-card">
+              <p class="stats-label">Current Card</p>
+              <p id="stat-card" class="stats-value">1 / 1</p>
+            </div>
+            <div class="stats-card">
+              <p class="stats-label">Accuracy</p>
+              <p id="stat-score" class="stats-value">0%</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="sidebar-card">
+          <div class="sidebar-card-head">
+            <div>
+              <p class="section-eyebrow">Visual Companion</p>
+              <h3 class="sidebar-title">Concept Diagram</h3>
+            </div>
+            <div id="visual-badge" class="info-pill info-pill-cool"></div>
+          </div>
+          <div class="visual-frame">
+            <svg id="concept-visual" viewBox="0 0 320 260" class="concept-svg" aria-hidden="true"></svg>
+          </div>
+          <p id="visual-caption" class="panel-copy"></p>
+        </section>
+
+        <section class="sidebar-card sidebar-card-warm">
+          <div class="snapshot-head">
+            <div>
+              <p class="section-eyebrow section-eyebrow-warm">Source Material</p>
+              <h2 id="snapshot-title" class="sidebar-title"></h2>
+            </div>
+            <div id="packet-count-badge" class="count-pill"></div>
+          </div>
+          <div class="packet-grid-shell">
+            <div id="packet-grid" class="packet-grid"></div>
+          </div>
+        </section>
+
+        <section class="sidebar-card sidebar-card-warm">
+          <p class="section-eyebrow section-eyebrow-warm">Topic Mapping</p>
+          <div id="topic-map" class="topic-map"></div>
+        </section>
+
+        <section class="sidebar-card sidebar-card-warm">
+          <p class="section-eyebrow section-eyebrow-warm">Quiz Summary</p>
+          <div class="stats-grid">
+            <div class="stats-card">
+              <p class="stats-label">Correct</p>
+              <p id="quiz-score-live" class="stats-value">0</p>
+            </div>
+            <div class="stats-card">
+              <p class="stats-label">Answered</p>
+              <p id="quiz-answered-live" class="stats-value">0</p>
+            </div>
+            <div class="stats-card">
+              <p class="stats-label">Remaining</p>
+              <p id="quiz-remaining-live" class="stats-value">0</p>
+            </div>
+          </div>
+          <div class="visual-frame visual-frame-warm">
+            <p class="section-eyebrow section-eyebrow-warm">Quiz Cue</p>
+            <svg id="quiz-concept-visual" viewBox="0 0 320 220" class="concept-svg" aria-hidden="true"></svg>
+            <p id="quiz-visual-caption" class="panel-copy"></p>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
